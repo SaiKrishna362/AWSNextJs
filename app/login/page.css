@@ -1,0 +1,68 @@
+.login-form-main-container{
+    background-color: aliceblue;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form-sub-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 60%;
+    width: 60%;
+    background-image: linear-gradient(to right, red , yellow);
+    border-radius: 10px;
+}
+
+.login-form-username-container{
+
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-form-password-container{
+
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-form-signup-forgot-container{
+
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.login-form-button{
+
+    width: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: solid 2px blue;
+    border-radius: 5px;
+}
+
+#inpUsername {
+    color: black;
+    padding-left: 3%;
+    border-radius: 3px;
+}
+
+#inpPassword{
+    color: black;
+    padding-left: 3%;
+    border-radius: 3px;
+}
