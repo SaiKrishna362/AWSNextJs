@@ -8,11 +8,15 @@ import { getCookie, setCookie } from 'cookies-next'
 
 export default function loginPage(){
 
+    const API_URL = process.env.NEXT_PUBLIC_API_URL;
+    console.log(API_URL)
+    //const API_URL = "http://localhost:5000";
     const [username, setUsername]   =   useState('')
     const [password, setPassword]   =   useState('')
     const [apiStatus, setApiStatus] =   useState('')
     const [errMsg, setErrMsg]       =   useState('')
 
+    
     const router = useRouter();
 
 
@@ -27,7 +31,7 @@ export default function loginPage(){
     const onSubmitForm = async (event) => {
         event.preventDefault()
         setApiStatus('loading')
-        const url = 'http://localhost:5000/login'
+        const url = `${API_URL}/login`;
         const userDetails = {
             username    :   username.trim(),
             password
@@ -64,9 +68,7 @@ export default function loginPage(){
     const loadPage = () => {
         getCookie('jwt_token') !== undefined ? router.push('/') : null
     }
-    useEffect(() => {
-        loadPage();
-    })
+
     
     return (
         <>

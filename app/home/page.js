@@ -3,12 +3,16 @@
 import { useEffect, useState } from "react";
 import { deleteCookie, getCookie } from "cookies-next";
 import { useRouter } from "next/navigation";
-
+import DocViewer, { DocViewerRenderers } from "@cyntler/react-doc-viewer";
+import "@cyntler/react-doc-viewer/dist/index.css";
 
 export default function HomePage() {
 
+
+
   const [apiStatus, setApiStatus] = useState('loading')
   const router = useRouter()
+
 
   const onPageLoad = () => {
     setApiStatus('loading')
@@ -29,6 +33,8 @@ export default function HomePage() {
     setApiStatus('success')
   }
 
+  
+
   const renderAllComponents = () => {
       switch (apiStatus) {
         case 'loading':
@@ -42,6 +48,7 @@ export default function HomePage() {
           return (
           <div>
             <h1>Main Header</h1>
+  
             <button onClick={onClickButton}>Logout</button>
           </div>
           )

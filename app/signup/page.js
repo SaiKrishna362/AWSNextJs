@@ -3,10 +3,14 @@ import '../signup/page.css'
 import Link from 'next/link'
 import { use, useEffect, useState } from "react"
 import { useRouter } from 'next/navigation'
+import dotenv from 'dotenv'
 
 
 export default function SignUp(){
 
+    const API_URL = process.env.NEXT_PUBLIC_API_URL;
+    //const API_URL = "http://localhost:5000";
+    //console.log(process.env.REACT_APP_API_URL + "Loaded")
     const [username, setUsername]   =   useState('')
     const [password, setPassword]   =   useState('')
     const [firstname, setFirstname] =   useState('')
@@ -19,8 +23,6 @@ export default function SignUp(){
     const onClickSignupButton = async (event) => {
         event.preventDefault()
         setApiStatus('loading')
-
-
 
         // const validateURL = `http://localhost:5000/user/${username}`
 
@@ -37,7 +39,9 @@ export default function SignUp(){
 
         // const validUser = (validateData.msg === "New User");
         if(firstname !== '' && lastname !== '' && username !== '' && password !== ''){
-            const validateURL = `http://localhost:5000/user/${username}`
+            const validateURL = `${API_URL}/user/${username}`
+
+            console.log(`${process.env.REACT_APP_API_URL}`)
 
             const validateOptions = {
                 method : 'GET',
@@ -52,7 +56,7 @@ export default function SignUp(){
     
             const validUser = (validateData.msg === "New User");
             if(validUser){
-                const url = 'http://localhost:5000/signup'
+                const url = `${API_URL}/signup`
                 const userDetails = {
                 username    :   username.trim(),
                 password,
@@ -131,7 +135,6 @@ export default function SignUp(){
                     <label htmlFor="inpPassword">Lastname</label>
                     <input id="inpLastname" placeholder='lastname' required maxLength={20} value={lastname} onChange={onChangeLastname} type='text'/>
                 </div>
-
                 <div className='signup-form-username-container'>
                     <label htmlFor="inpUsername">Username</label>
                     <input id="inpUsername" placeholder='username' required maxLength={50} value={username} onChange={onChangeUsername} type='text' />
