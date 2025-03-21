@@ -1,15 +1,15 @@
 'use client'
 import '../login/page.css'
 import Link from 'next/link'
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { useRouter } from 'next/navigation'
 import { getCookie, setCookie } from 'cookies-next'
 
 
 export default function loginPage(){
 
+   
     const API_URL = process.env.NEXT_PUBLIC_API_URL;
-    console.log(API_URL)
     //const API_URL = "http://localhost:5000";
     const [username, setUsername]   =   useState('')
     const [password, setPassword]   =   useState('')
@@ -36,6 +36,12 @@ export default function loginPage(){
             username    :   username.trim(),
             password
         }
+        
+            if (username === "" || password === ""){
+                alert("Please enter username or password")
+                setApiStatus('failure')
+            }
+            else{
             const options = {
             method : 'POST',
             body: JSON.stringify(userDetails),
@@ -54,16 +60,17 @@ export default function loginPage(){
             setApiStatus('failure')
             setErrMsg(data.err_msg)
         }
+    }
 
     }
 
-    const onChangeUsername = (event) =>{        
-        setUsername(event.target.value)
-    }
+    const onChangeUsername = useCallback((event) => {
+        setUsername(event.target.value);
+    }, []);
 
-    const onChangePassword = (event) =>{
+    const onChangePassword =  useCallback((event) =>{
         setPassword(event.target.value)
-    }
+    },[]);
 
     const loadPage = () => {
         getCookie('jwt_token') !== undefined ? router.push('/') : null
