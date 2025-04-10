@@ -16,7 +16,7 @@
     "cookies-next": "^5.0.2",
     "dotenv": "^16.4.7",
     "next": "15.1.0",
-    "next-axiom": "^1.7.0",
+    "next-axiom": "^1.9.1",
     "nvm": "^0.0.4",
     "react": "^19.0.0",
     "react-documents": "^1.2.1",
